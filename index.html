@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карта Вакансий</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/lucide-icons@latest/dist/css/lucide.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="container mx-auto px-4 py-6 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <i class="lucide lucide-map-pin w-8 h-8 text-blue-700"></i>
+      <h1 class="text-2xl font-bold text-gray-800">Карта Вакансий</h1>
+    </div>
+    <nav>
+      <a href="#features" class="mx-3 text-gray-700 hover:text-blue-600">Возможности</a>
+      <a href="#download" class="mx-3 text-gray-700 hover:text-blue-600">Скачать</a>
+    </nav>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script src="script.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "34uvvZE7N2UFld4l-",
+      });
+   })();
+</script>
+  </header>
+
+  <main>
+    <section class="container mx-auto px-4 text-center py-16">
+      <h2 class="text-4xl font-bold mb-4 text-gray-800">
+        Найди работу <span class="text-blue-600">здесь и сейчас</span>
+      </h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Интерактивная карта вакансий вашего города
+      </p>
+      <form class="max-w-md mx-auto flex" onsubmit="handleSubmit(event)">
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="Введите email" 
+          class="flex-grow p-3 border rounded-l-lg" 
+          required 
+        />
+        <button 
+          type="submit" 
+          class="bg-blue-600 text-white px-6 py-3 rounded-r-lg hover:bg-blue-700">
+          Получить доступ
+        </button>
+      </form>
+    </section>
+
+    <section id="features" class="container mx-auto px-4 py-16 bg-white">
+      <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Как это работает</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 bg-gray-100 rounded-lg">
+          <i class="lucide lucide-map-pin w-12 h-12 text-blue-600"></i>
+          <h4 class="text-xl font-semibold mb-3">Геолокация вакансий</h4>
+          <p class="text-gray-600">Находите работу прямо рядом с вами на интерактивной карте города</p>
+        </div>
+        <div class="text-center p-6 bg-gray-100 rounded-lg">
+          <i class="lucide lucide-search w-12 h-12 text-green-600"></i>
+          <h4 class="text-xl font-semibold mb-3">Умный поиск</h4>
+          <p class="text-gray-600">Фильтруйте вакансии по зарплате, графику и профессиональной области</p>
+        </div>
+        <div class="text-center p-6 bg-gray-100 rounded-lg">
+          <i class="lucide lucide-briefcase w-12 h-12 text-purple-600"></i>
+          <h4 class="text-xl font-semibold mb-3">Актуальные предложения</h4>
+          <p class="text-gray-600">Ежедневное обновление базы работодателей и новых вакансий</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="container mx-auto px-4 py-16 text-center">
+      <h3 class="text-3xl font-bold mb-6 text-gray-800">Скачай приложение прямо сейчас</h3>
+      <div class="flex justify-center space-x-4">
+        <button class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
+          <i class="lucide lucide-users mr-2"></i> Для работников
+        </button>
+        <button class="bg-gray-800 text-white px-6 py-3 rounded-lg flex items-center">
+          <i class="lucide lucide-briefcase mr-2"></i> Для работодателей
+        </button>
+      </div>
+    </section>
+
+<section class="container mx-auto px-4 py-16 bg-gray-100">
+      <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h3 class="text-3xl font-bold text-center mb-6 text-gray-800">Остались вопросы? Свяжитесь с нами!</h3>
+        <form class="space-y-4" onsubmit="handleContactSubmit(event)">
+          <input 
+            type="text" 
+            id="name" 
+            placeholder="Ваше имя" 
+            class="w-full p-3 border rounded-lg" 
+            required 
+          />
+          <input 
+            type="tel" 
+            id="phone" 
+            placeholder="Номер телефона" 
+            class="w-full p-3 border rounded-lg" 
+            required 
+          />
+          <input 
+            type="email" 
+            id="contactEmail" 
+            placeholder="Email" 
+            class="w-full p-3 border rounded-lg" 
+            required 
+          />
+          <textarea 
+            id="message" 
+            placeholder="Ваше сообщение" 
+            class="w-full p-3 border rounded-lg h-24">
+          </textarea>
+          <button 
+            type="submit" 
+            onclick="sendMail()"
+            class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700">
+            Отправить
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2024 Карта Вакансий. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      alert(`Спасибо! Мы отправим приглашение на ${email}`);
+    }
+
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      alert(`Спасибо, ${name}! Мы свяжемся с вами в ближайшее время.`);
+    }
+  </script>
+</body>
+</html>
